@@ -16,19 +16,31 @@
 User Function BRWZA1()
 
 Local aArea := GetnextAlias()
-Local oBrowseZA1 //variavel objeto que ira receber o instanciamento da class fwmbrowse
+Local oBrowse //variavel objeto que ira receber o instanciamento da class fwmbrowse
 
 
-oBrowseZA1 := Fwmbrowse():New()
+oBrowse:=Fwmbrowse():New()
 
 // passa o parametro a tabela que eu quero mostrar no browser
-oBrowseZA1:SetAlias("ZA1")
+oBrowse:SetAlias("ZA1")
 
-oBrowseZA1: SetDescription ("Meu primeiro browser")
+oBrowse:SetDescription("Meu primeiro browser")
 
-oBrowseZA1: ACTIVATE()
+     
+
+oBrowse:Activate()
+Return oBrowse
+
+
+Static Function MenuDef()
+    Local aRotina := {}
+    ADD OPTION aRotina Title 'Pesquisar' 	Action 'PesqBrw'    OPERATION 1 ACCESS 0
+    ADD OPTION aRotina Title 'Visualizar'   Action 'U_AGPE001A(2)' 	OPERATION 2 ACCESS 0
+    ADD OPTION aRotina Title 'Incluir'      Action 'U_AGPE001A(3)' 	OPERATION 3 ACCESS 0
+    ADD OPTION aRotina Title 'Alterar'      Action 'U_AGPE001A(4)' 	OPERATION 4 ACCESS 0
+    ADD OPTION aRotina Title 'Excluir'      Action 'U_AGPE001A(5)'	OPERATION 5 ACCESS 0
+Return aRotina 
 
 
 
-Return 
 
